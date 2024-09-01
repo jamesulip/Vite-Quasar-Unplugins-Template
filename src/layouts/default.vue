@@ -1,3 +1,20 @@
+<script>
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const leftDrawerOpen = ref(false)
+
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+    }
+  },
+}
+</script>
+
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-primary text-white">
@@ -12,14 +29,14 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer v-model="leftDrawerOpen" show-if-above side="left" bordered>
       <q-list>
-        <q-item clickable v-close-popup>
+        <q-item v-close-popup clickable>
           <q-item-section>
             <q-item-label>Home</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup>
+        <q-item v-close-popup clickable>
           <q-item-section>
             <q-item-label>Profile</q-item-label>
           </q-item-section>
@@ -30,23 +47,5 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
   </q-layout>
 </template>
-
-<script>
-import { ref } from 'vue'
-
-export default {
-  setup() {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-}
-</script>

@@ -49,11 +49,11 @@ export default defineConfig({
 
     vue(
       {
-        template: { transformAssetUrls }
-      }
+        template: { transformAssetUrls },
+      },
     ),
     quasar({
-      sassVariables: 'src/quasar-variables.sass'
-    })
+      sassVariables: 'src/quasar-variables.sass',
+    }),
   ],
 })
