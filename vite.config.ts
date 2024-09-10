@@ -3,8 +3,10 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
-import { Vuetify3Resolver } from 'unplugin-vue-components/resolvers'
+import { QuasarResolver } from 'unplugin-vue-components/resolvers'
 import UnoCSS from 'unocss/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import legacy from '@vitejs/plugin-legacy'
 
 import vue from '@vitejs/plugin-vue'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
@@ -21,14 +23,16 @@ export default defineConfig({
       imports: [
         'vue',
         'pinia',
+        VueRouterAutoImports,
         '@vueuse/core',
         {
-          'vue-router/auto': ['useRoute', 'useRouter'],
-          // 'vuefire': ['useCollection'],
-          // 'firebase/firestore': ['collection', 'getFirestore', 'addDoc', 'query', 'orderBy', 'doc', 'setDoc', 'where'],
-          // 'firebase/app': ['initializeApp'],
+          'vue-router/auto': [ 'useRouteQuery', 'useRouteParams', 'useRouteMeta'],
         },
-
+        {
+          axios: [
+            ['default', 'axios'],
+          ],
+        }
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -42,10 +46,11 @@ export default defineConfig({
     Components({
       dts: 'src/components.d.ts',
       resolvers: [
-        Vuetify3Resolver(),
+        QuasarResolver(),
       ],
       directoryAsNamespace: true,
     }),
+    legacy(),
 
     vue(
       {

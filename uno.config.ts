@@ -1,9 +1,10 @@
 // vite.config.ts
-import UnoCSS from 'unocss/vite'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'unocss'
+
+import presetUno from '@unocss/preset-uno'
 
 export default defineConfig({
-  plugins: [
-    UnoCSS(),
-  ],
+    presets: [
+        presetUno(),
+    ],
 })
