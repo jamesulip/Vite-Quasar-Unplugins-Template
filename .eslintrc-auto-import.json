@@ -307,6 +307,12 @@
     "watchTriggerable": true,
     "watchWithFilter": true,
     "whenever": true,
-    "where": true
+    "where": true,
+    "useRouteMeta": true,
+    "useRouteParams": true,
+    "useRouteQuery": true,
+    "axios": true,
+    "onBeforeRouteLeave": true,
+    "onBeforeRouteUpdate": true
   }
 }
