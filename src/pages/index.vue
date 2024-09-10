@@ -4,7 +4,9 @@
 
 <template>
   <q-page>
-      <div class="text-h6">Home page</div>
+    <div class="text-h6">
+      Home page
+    </div>
   </q-page>
 </template>
 

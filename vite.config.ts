@@ -26,13 +26,13 @@ export default defineConfig({
         VueRouterAutoImports,
         '@vueuse/core',
         {
-          'vue-router/auto': [ 'useRouteQuery', 'useRouteParams', 'useRouteMeta'],
+          'vue-router/auto': ['useRouteQuery', 'useRouteParams', 'useRouteMeta'],
         },
         {
           axios: [
             ['default', 'axios'],
           ],
-        }
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -41,6 +41,9 @@ export default defineConfig({
       eslintrc: {
         enabled: true,
       },
+      resolvers: [
+        QuasarResolver(),
+      ],
       vueTemplate: true,
     }),
     Components({
